@@ -1,0 +1,21 @@
+<head>
+    <link rel="manifest" href="manifest.webmanifest">
+</head>
+<form id="myform" onsubmit="myFunction()">
+    <input type="text" id="fname" />
+    <input type="submit" value="Submit" />
+  </form>
+  
+<script>
+     if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js', {
+        scope: './'
+      }).then(function(reg) {
+        console.log('Service worker has been registered for scope:'+ reg.scope);
+      });
+    }
+    function myFunction() {
+        console.log(document.querySelector("#fname").value)
+        document.write('<a href="'+document.querySelector("#fname").value+'">Click here !</a>')
+    }
+</script>
